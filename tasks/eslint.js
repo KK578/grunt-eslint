@@ -52,8 +52,14 @@ module.exports = grunt => {
 
 		const tooManyWarnings = opts.maxWarnings >= 0 && report.warningCount > opts.maxWarnings;
 
-		if (report.errorCount === 0 && tooManyWarnings) {
-			grunt.warn(`ESLint found too many warnings (maximum: ${opts.maxWarnings})`);
+		if (report.errorCount === 0) {
+			if (tooManyWarnings) {
+				grunt.warn(`ESLint found too many warnings (maximum: ${opts.maxWarnings})`);
+			} else {
+				const fileCount = results.length;
+				const fileCountStr = grunt.util.pluralize(fileCount, 'file/files');
+				grunt.log.ok(`ESLint found no issues in ${fileCount} ${fileCountStr}`);
+			}
 		}
 
 		return report.errorCount === 0;
