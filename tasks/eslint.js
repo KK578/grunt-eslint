@@ -1,5 +1,4 @@
 'use strict';
-const chalk = require('chalk');
 const eslint = require('eslint');
 
 module.exports = grunt => {
@@ -11,7 +10,7 @@ module.exports = grunt => {
 		});
 
 		if (this.filesSrc.length === 0) {
-			grunt.log.writeln(chalk.magenta('Could not find any files to validate'));
+			grunt.log.warn('Could not find any files to validate');
 			return true;
 		}
 

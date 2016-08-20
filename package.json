@@ -29,7 +29,6 @@
     "esprima"
   ],
   "dependencies": {
-    "chalk": "^1.0.0",
     "eslint": "^3.0.0"
   },
   "devDependencies": {
